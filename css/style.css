@@ -1,0 +1,17 @@
+.surface{
+   width: 384px;
+   height: 384px;
+   display: flex;
+   flex-wrap: wrap;
+}
+
+.pixel {
+   min-width: 20px;
+   min-height: 20px;
+   margin: 1px;
+   border: 1px solid #000;
+}
+
+.colored {
+   background-color: #000;
+}
