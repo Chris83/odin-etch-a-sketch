@@ -1,13 +1,22 @@
+.controls {
+   width: 880px;
+   margin: auto;
+   border: 1px solid #000;
+}
+
+button {
+   margin: 5px 10px;
+}
+
 .surface{
-   width: 384px;
-   height: 384px;
+   width: 880px;
+   height: 880px;
+   margin: auto;
    display: flex;
    flex-wrap: wrap;
 }
 
 .pixel {
-   min-width: 20px;
-   min-height: 20px;
    margin: 1px;
    border: 1px solid #000;
 }
