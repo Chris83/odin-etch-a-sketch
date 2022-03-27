@@ -4,6 +4,16 @@
    border: 1px solid #000;
 }
 
+   ul {
+   list-style: none;
+   padding: 0px;
+   margin: 0px;
+}
+
+li {
+   display: inline;
+}
+
 button {
    margin: 5px 10px;
    padding: 6px 12px;
@@ -23,7 +33,7 @@ button {
 }
 
 .pixel {
-   border: 1px solid #000;
+   border: 1px solid rbga(0, 0, 0, 1);
 }
 
 .colored {

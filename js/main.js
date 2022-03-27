@@ -3,14 +3,9 @@ function ClearSurface() {
    const gridSize = Math.sqrt(pixels.length);
 
    const newGridSize = ClampValue(1, 100, +window.prompt("Enter a grid size (1 - 100):", gridSize));
-  
-   if(!newGridSize || newGridSize === gridSize){
-      pixels.forEach(pixel => (pixel.classList.contains("colored") ? pixel.classList.remove("colored") : null));
-   }
-   else{
-      document.querySelector(".surface").innerHTML = "";
-      BuildGrid(newGridSize);
-   }
+
+   document.querySelector(".surface").innerHTML = "";
+   BuildGrid(newGridSize);
 }
 
 function ClampValue(min, max, value){
@@ -25,12 +20,15 @@ function BuildGrid(gridSize){
    const surfaceSize = 880;
    const pixelSize = Math.floor(surfaceSize/gridSize - 2);
 
+   const opacity = document.getElementsByName("opacityValue")[0].valueAsNumber / 100;
+
    for(let x=0; x<gridSize; x++){
       for(let y=0; y<gridSize; y++){
          let pixel = document.createElement("div");
          pixel.classList.add("pixel");
          pixel.style.minWidth =  pixelSize+"px";
          pixel.style.minHeight = pixelSize+"px";
+         pixel.style.opacity = 0.0;
          pixel.addEventListener("mouseover", ColorPixel);
 
          surfaceDiv.appendChild(pixel);
@@ -40,7 +38,11 @@ function BuildGrid(gridSize){
 
 function ColorPixel(e){
    e.stopPropagation();
+   
+   const opacity = document.getElementsByName("opacityValue")[0].valueAsNumber / 100;
+   this.style.opacity = (+this.style.opacity < 1) ? +this.style.opacity + opacity : 1;
+
    return (!this.classList.contains("colored") ? this.classList.add("colored") : null);
 }
 
-BuildGrid(10);
+BuildGrid(16);

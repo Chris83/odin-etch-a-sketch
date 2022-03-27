@@ -10,7 +10,10 @@
    <body>
       <div class="container">
          <div class="controls">
-            <button class="clear" onclick="ClearSurface()">Clear</button>
+            <ul>
+               <li><button class="clear" onclick="ClearSurface()">Clear</button></li>
+               <li>Opacity <input type="number" name="opacityValue" min="10" max="100" value="100" step="10" size="3"></li>
+            </ul>
          </div>
          <div class="surface">
 
