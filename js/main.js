@@ -18,7 +18,7 @@ function ClampValue(min, max, value){
 function BuildGrid(gridSize){
    const surfaceDiv = document.querySelector(".surface");
    const surfaceSize = 880;
-   const pixelSize = Math.floor(surfaceSize/gridSize - 2);
+   const pixelSize = Math.floor(surfaceSize/gridSize);
 
    const opacity = document.getElementsByName("opacityValue")[0].valueAsNumber / 100;
 
