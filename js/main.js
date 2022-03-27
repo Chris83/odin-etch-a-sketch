@@ -23,7 +23,7 @@ function ClampValue(min, max, value){
 function BuildGrid(gridSize){
    const surfaceDiv = document.querySelector(".surface");
    const surfaceSize = 880;
-   const pixelSize = Math.floor(surfaceSize/gridSize - 4);
+   const pixelSize = Math.floor(surfaceSize/gridSize - 2);
 
    for(let x=0; x<gridSize; x++){
       for(let y=0; y<gridSize; y++){
@@ -38,7 +38,8 @@ function BuildGrid(gridSize){
    }
 }
 
-function ColorPixel(){
+function ColorPixel(e){
+   e.stopPropagation();
    return (!this.classList.contains("colored") ? this.classList.add("colored") : null);
 }
 
