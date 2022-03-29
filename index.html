@@ -11,8 +11,8 @@
       <div class="container">
          <div class="controls">
             <ul>
-               <li><button class="clear" onclick="ClearSurface()">Clear</button></li>
-               <li>Opacity <input type="number" name="opacityValue" min="10" max="100" value="100" step="10" size="3"></li>
+               <li><button class="clear" onclick="ClearGrid()">Clear</button></li>
+               <li>Opacity <input type="number" name="opacityValue" min="10" max="100" value="100" step="10" size="3" oninput="SetOpacity()"></li>
             </ul>
          </div>
          <div class="surface">

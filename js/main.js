@@ -1,11 +1,13 @@
-function ClearSurface() {
-   const pixels = document.querySelectorAll(".pixel");
-   const gridSize = Math.sqrt(pixels.length);
+const controls = {
+   opacity: 1.0,
+   color: "#000000",
+   gridSize: 16
+}
 
-   const newGridSize = ClampValue(1, 100, +window.prompt("Enter a grid size (1 - 100):", gridSize));
-
+function ClearGrid() {
    document.querySelector(".surface").innerHTML = "";
-   BuildGrid(newGridSize);
+   SetGridSize();
+   BuildGrid();
 }
 
 function ClampValue(min, max, value){
@@ -15,15 +17,13 @@ function ClampValue(min, max, value){
    return value;
 }
 
-function BuildGrid(gridSize){
+function BuildGrid(){
    const surfaceDiv = document.querySelector(".surface");
    const surfaceSize = 880;
-   const pixelSize = Math.floor(surfaceSize/gridSize);
+   const pixelSize = Math.floor(surfaceSize/controls.gridSize);
 
-   const opacity = document.getElementsByName("opacityValue")[0].valueAsNumber / 100;
-
-   for(let x=0; x<gridSize; x++){
-      for(let y=0; y<gridSize; y++){
+   for(let x=0; x<controls.gridSize; x++){
+      for(let y=0; y<controls.gridSize; y++){
          let pixel = document.createElement("div");
          pixel.classList.add("pixel");
          pixel.style.minWidth =  pixelSize+"px";
@@ -38,11 +38,24 @@ function BuildGrid(gridSize){
 
 function ColorPixel(e){
    e.stopPropagation();
-   
-   const opacity = document.getElementsByName("opacityValue")[0].valueAsNumber / 100;
-   this.style.opacity = (+this.style.opacity < 1) ? +this.style.opacity + opacity : 1;
+
+   this.style.opacity = (+this.style.opacity < 1) ? +this.style.opacity + controls.opacity : 1;
 
    return (!this.classList.contains("colored") ? this.classList.add("colored") : null);
 }
 
-BuildGrid(16);
+function SetGridSize(){
+   controls.gridSize = ClampValue(1, 100, +window.prompt("Enter a grid size (1 - 100):", controls.gridSize));
+}
+
+function SetOpacity(){
+   controls.opacity = document.getElementsByName("opacityValue")[0].valueAsNumber / 100;
+}
+
+function Init(){
+   SetOpacity();
+   controls.gridSize = 16;
+   BuildGrid();
+}
+
+Init();
